@@ -8,11 +8,16 @@ class PapSpider(CrawlSpider):
     allowed_domains = ["pap.pl"]
     start_urls = ["https://pap.pl"]
 
-    rules = (Rule(LinkExtractor(allow=r"Items/"), callback="parse_item", follow=True),)
-
+    rules = Rule(
+        LinkExtractor(allow=(r"/aktualnosci/[^/?#]+/?$",)),
+        callback="parse_item",
+        follow=False,
+    ),
     def parse_item(self, response):
-        item = {}
-        #item["domain_id"] = response.xpath('//input[@id="sid"]/@value').get()
-        #item["name"] = response.xpath('//div[@id="name"]').get()
-        #item["description"] = response.xpath('//div[@id="description"]').get()
-        return item
+        return {
+            "url": response.url,
+            "title": response.css("h1::text").get(),
+            "text": " ".join(
+                response.css(".field--name-body ::text").getall()
+            ).strip(),
+        }
