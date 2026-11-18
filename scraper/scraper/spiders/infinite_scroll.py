@@ -19,6 +19,7 @@ class InfiniteScrollSpider(scrapy.Spider):
         },
         "SELENIUM_DRIVER_NAME": "chrome",
         "SELENIUM_DRIVER_EXECUTABLE_PATH": os.environ.get("CHROMEDRIVER_PATH"),
+        "SELENIUM_BROWSER_EXECUTABLE_PATH": os.environ.get("CHROME_BINARY_PATH"),
         "SELENIUM_DRIVER_ARGUMENTS": ["--headless=new"],
     }
 

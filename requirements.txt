@@ -1,0 +1,5 @@
+# Odtworzenie zależności (w aktywnym środowisku): python -m pip install -r requirements.txt
+# Aktywacja PowerShell: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; .\.venv\Scripts\Activate.ps1
+scrapy==2.19.0
+scrapy-selenium==0.0.7
+selenium==4.9.1

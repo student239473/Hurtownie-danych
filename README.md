@@ -10,10 +10,27 @@ Install the project dependencies from the repository root:
 uv sync
 ```
 
-Install ChromeDriver that matches your Chrome browser, then set
-`CHROMEDRIVER_PATH` to the full path of `chromedriver.exe` in PowerShell:
+Alternatively, install the pinned Python dependencies with pip:
 
 ```powershell
+python -m pip install -r requirements.txt
+```
+
+Use Python 3.14 or newer, as required by `pyproject.toml`.
+
+Activate the virtual environment in PowerShell (the execution policy change
+applies only to the current terminal):
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+.\.venv\Scripts\Activate.ps1
+```
+
+The Selenium spider uses Chrome for Testing and its matching ChromeDriver.
+Set both paths in PowerShell:
+
+```powershell
+$env:CHROME_BINARY_PATH = "C:\path\to\chrome.exe"
 $env:CHROMEDRIVER_PATH = "C:\path\to\chromedriver.exe"
 ```
 
